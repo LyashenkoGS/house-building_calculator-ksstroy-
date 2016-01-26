@@ -10,15 +10,10 @@ import ua.ksstroy.logic.work.AdjustmentData;
 import ua.ksstroy.logic.work.CoverData;
 import ua.ksstroy.logic.work.WorkData;
 import ua.ksstroy.logic.work.WorkManager;
-import ua.ksstroy.logic.worktype.WorkTypeData;
-import ua.ksstroy.logic.worktype.WorkTypeGroupData;
 import ua.ksstroy.logic.worktype.WorkTypeManagerImpl;
-import ua.ksstroy.logic.zonegroup.ZoneData;
 import ua.ksstroy.logic.zonegroup.ZoneManagerImpl;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class WorkController {
