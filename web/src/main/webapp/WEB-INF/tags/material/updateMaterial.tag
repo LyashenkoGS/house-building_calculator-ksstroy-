@@ -18,14 +18,14 @@
                 <td>planedCost:</td>
                 <td><input type="text" name="description" value="${material.planedCost}"></td>
             </tr>
-            <tr>
+       <%--     <tr>
                 <td>dealCost:</td>
                 <td><input type="text" name="pricePerUnit" value="${material.dealCost}"></td>
             </tr>
             <tr>
                 <td>closedCost:</td>
                 <td><input type="text" name="unitName" value="${material.closedCost}"></td>
-            </tr>
+            </tr>--%>
             </tbody>
         </table>
         <input class="accept_changes_btn clickableIcon" type="image" src="${done_btn}">

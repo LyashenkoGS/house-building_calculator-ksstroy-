@@ -146,13 +146,13 @@ CREATE TABLE `material_type_group` (
   DEFAULT CHARSET = utf8;
 
 INSERT INTO `material_type_group` VALUES (1, 'root_material_type_group', 'root_material_type_group_descr.', NULL);
-INSERT INTO `material_type_group` VALUES (2, 'material_type_group_level_1A', 'material_type_group_1A_descr.', 1);
-INSERT INTO `material_type_group` VALUES (3, 'material_type_group_level_1B', 'material_type_group_1B_descr.', 1);
-INSERT INTO `material_type_group` VALUES (4, 'material_type_group_level_2A', 'material_type_group_2A_descr.', 2);
-INSERT INTO `material_type_group` VALUES (5, 'material_type_group_level_2B', 'material_type_group_2B_descr.', 2);
+INSERT INTO `material_type_group` VALUES (2, 'OBSHE STROITELNIE MATERIALY', 'vse materiali, kotorie ne voshli v drugie gruppy.', 1);
+INSERT INTO `material_type_group` VALUES (3, 'OBORYDOVANIE', 'santeshnika, dveri, podokonniky, furnitura', 1);
+INSERT INTO `material_type_group` VALUES (4, 'FINISHNIE POKRITIYA', 'oblizovochnie materialy.', 1);
+/*INSERT INTO `material_type_group` VALUES (5, 'material_type_group_level_2B', 'material_type_group_2B_descr.', 2);
 INSERT INTO `material_type_group` VALUES (6, 'material_type_group_level_2C', 'material_type_group_2C_descr.', 3);
 INSERT INTO `material_type_group` VALUES (7, 'material_type_group_level_2D', 'material_type_group_2D_descr.', 3);
-
+*/
 
 DROP TABLE IF EXISTS `material_type`;
 CREATE TABLE `material_type` (
@@ -168,15 +168,15 @@ CREATE TABLE `material_type` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-INSERT INTO `material_type` VALUES (1, 'material_type_1', 'material_type_1_descr.', '3.0', 'unit_name_1', '2');
-INSERT INTO `material_type` VALUES (2, 'material_type_2', 'material_type_2_descr.', '3.0', 'unit_name_2', '3');
-INSERT INTO `material_type` VALUES (3, 'material_type_3', 'material_type_3_descr.', '3.0', 'unit_name_3', '4');
-INSERT INTO `material_type` VALUES (4, 'material_type_4', 'material_type_4_descr.', '3.0', 'unit_name_4', '5');
-INSERT INTO `material_type` VALUES (5, 'material_type_5', 'material_type_5_descr.', '3.0', 'unit_name_5', '6');
-INSERT INTO `material_type` VALUES (6, 'material_type_6', 'material_type_6_descr.', '3.0', 'unit_name_6', '6');
-INSERT INTO `material_type` VALUES (7, 'material_type_7', 'material_type_7_descr.', '3.0', 'unit_name_7', '7');
-INSERT INTO `material_type` VALUES (8, 'material_type_8', 'material_type_8_descr.', '3.0', 'unit_name_8', '7');
-INSERT INTO `material_type` VALUES (9, 'material_type_9', 'material_type_9_descr.', '3.0', 'unit_name_9', '7');
+INSERT INTO `material_type` VALUES (1, 'shpaklevka finish', 'material_type_1_descr.', '110', 'unit_name_1', '2');
+INSERT INTO `material_type` VALUES (2, 'shpaklevka start', 'material_type_2_descr.', '110', 'unit_name_2', '2');
+INSERT INTO `material_type` VALUES (3, 'gruntovka', 'material_type_3_descr.', '20', 'unit_name_3', '2');
+INSERT INTO `material_type` VALUES (4, 'vanna', 'material_type_4_descr.', '3200', 'unit_name_4', '3');
+INSERT INTO `material_type` VALUES (5, 'unitaz', 'material_type_5_descr.', '1500', 'unit_name_5', '3');
+INSERT INTO `material_type` VALUES (6, 'umivalnik', 'material_type_6_descr.', '1000', 'unit_name_6', '3');
+INSERT INTO `material_type` VALUES (7, 'plitka na steny', 'material_type_7_descr.', '200', 'unit_name_7', '4');
+INSERT INTO `material_type` VALUES (8, 'plitka na pol', 'material_type_8_descr.', '300', 'unit_name_8', '4');
+INSERT INTO `material_type` VALUES (9, 'kvarzeviy grunt', 'material_type_9_descr.', '500', 'unit_name_9', '4');
 
 
 DROP TABLE IF EXISTS `materials`;
