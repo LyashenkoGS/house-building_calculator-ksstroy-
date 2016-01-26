@@ -15,6 +15,7 @@ import ua.ksstroy.logic.zonegroup.ZoneManagerImpl;
 
 import javax.annotation.Resource;
 
+//sadfasd
 @Controller
 public class WorkController {
 
