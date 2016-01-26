@@ -15,10 +15,10 @@ import ua.ksstroy.logic.zonegroup.ZoneManagerImpl;
 
 import javax.annotation.Resource;
 
-//sadfasd
 @Controller
 public class WorkController {
 
+    //asdasdasda
     @Resource(name = "WorkManagerImpl")
     WorkManager workManager;
 
