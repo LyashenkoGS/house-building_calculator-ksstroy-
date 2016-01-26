@@ -17,10 +17,10 @@
 <div id="wraper">
     <ul id="workDataTree">
         <ul class="initializers">
-            <work:addWorkGroup innerWorkGroup="${workGroup}"/>
-            <work:addWork workGroup="${workGroup}" workType="${workType}" zone="${zone}"/>
+            <work:addWorkGroup innerWorkGroup="${workGroup}" workType="${workType}"/>
+            <work:addWork workGroup="${workGroup}" zone="${zone}"/>
         </ul>
-        <work:node workGroupData="${workObject}" workType="${workType}"/>
+        <work:node workGroupData="${workObject}"/>
     </ul>
 </div>
 </body>

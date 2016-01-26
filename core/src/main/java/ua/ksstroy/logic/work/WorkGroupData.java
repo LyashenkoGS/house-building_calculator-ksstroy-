@@ -1,5 +1,7 @@
 package ua.ksstroy.logic.work;
 
+import ua.ksstroy.logic.worktype.WorkTypeData;
+
 import java.util.List;
 
 public class WorkGroupData {
@@ -7,6 +9,8 @@ public class WorkGroupData {
     private String id;
 
     private String name;
+
+    private WorkTypeData workTypeData;
 
     private List<WorkGroupData> groups;
 
@@ -26,6 +30,14 @@ public class WorkGroupData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public WorkTypeData getWorkTypeData() {
+        return workTypeData;
+    }
+
+    public void setWorkTypeData(WorkTypeData workTypeData) {
+        this.workTypeData = workTypeData;
     }
 
     public List<WorkGroupData> getGroups() {

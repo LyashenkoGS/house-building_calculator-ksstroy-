@@ -1,5 +1,7 @@
 package ua.ksstroy.models.work;
 
+import ua.ksstroy.models.worktype.WorkTypeModel;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,10 @@ public class WorkGroupModel {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_type_id")
+    private WorkTypeModel type;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_group_id")
@@ -45,6 +51,14 @@ public class WorkGroupModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public WorkTypeModel getType() {
+        return type;
+    }
+
+    public void setType(WorkTypeModel type) {
+        this.type = type;
     }
 
     public List<WorkGroupModel> getGroups() {

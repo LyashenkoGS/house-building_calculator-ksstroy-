@@ -2,8 +2,10 @@ package ua.ksstroy.implementations;
 
 import org.springframework.stereotype.Component;
 import ua.ksstroy.converter.work.WorkGroupModelToWorkGroupConvertor;
+import ua.ksstroy.converter.worktype.WorkTypeToWorkTypeModelConvert;
 import ua.ksstroy.logic.work.WorkGroup;
 import ua.ksstroy.logic.work.WorkGroupDao;
+import ua.ksstroy.logic.worktype.WorkType;
 import ua.ksstroy.models.work.WorkGroupModel;
 import ua.ksstroy.persistence.DoInTransaction;
 import ua.ksstroy.persistence.GetInTransaction;
@@ -16,25 +18,29 @@ public class WorkGroupDaoImpl implements WorkGroupDao {
     TransactionHelper helper = new TransactionHelper();
 
     @Override
-    public void addWorkGroup(final String workGroupName, final String parentGroupId) {
+    public void addWorkGroup(final String workGroupName, final String parentGroupId, final WorkType workType) {
         helper.doWithCommit(new DoInTransaction() {
             @Override
             public void process(SessionWrapper session) {
                 WorkGroupModel model = new WorkGroupModel();
                 model.setName(workGroupName);
+                model.setType(new WorkTypeToWorkTypeModelConvert().convert(workType));
                 model.setWorkGroupModel(session.get(WorkGroupModel.class, parentGroupId));
+
                 session.save(model);
             }
         });
     }
 
     @Override
-    public void addWorkGroup(final String groupName) {
+    public void addWorkGroup(final String groupName, final WorkType workType) {
         helper.doWithCommit(new DoInTransaction() {
             @Override
             public void process(SessionWrapper session) {
                 WorkGroupModel workGroupModel = new WorkGroupModel();
                 workGroupModel.setName(groupName);
+                workGroupModel.setType(new WorkTypeToWorkTypeModelConvert().convert(workType));
+
                 session.save(workGroupModel);
             }
         });

@@ -1,6 +1,7 @@
 package ua.ksstroy.converter.work;
 
 import ua.ksstroy.converter.Converter;
+import ua.ksstroy.converter.worktype.WorkTypeModelToWorkTypeConvert;
 import ua.ksstroy.logic.work.Work;
 import ua.ksstroy.logic.work.WorkGroup;
 import ua.ksstroy.logic.work.WorkGroupImpl;
@@ -16,6 +17,7 @@ public class WorkGroupModelToWorkGroupConvertor implements Converter<WorkGroupMo
         WorkGroup workGroup = new WorkGroupImpl();
         workGroup.setId(workGroupModel.getId());
         workGroup.setName(workGroupModel.getName());
+        workGroup.setWorkType(new WorkTypeModelToWorkTypeConvert().convert(workGroupModel.getType()));
 
         List<WorkGroup> workGroups = new ArrayList<>();
         for (WorkGroupModel workGroupM : workGroupModel.getGroups() ) {

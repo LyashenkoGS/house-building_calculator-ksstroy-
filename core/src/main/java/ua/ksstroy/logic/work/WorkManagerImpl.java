@@ -5,6 +5,7 @@ import ua.ksstroy.converter.worktype.WorkTypeDataToWorkTypeConverter;
 import ua.ksstroy.converter.worktype.WorkTypeToWorkTypeDataConverter;
 import ua.ksstroy.converter.zonegroup.ZoneDataToZoneConverter;
 import ua.ksstroy.converter.zonegroup.ZoneToZoneDataConverter;
+import ua.ksstroy.logic.worktype.WorkTypeData;
 import ua.ksstroy.logic.zonegroup.Zone;
 import ua.ksstroy.logic.zonegroup.ZoneData;
 
@@ -22,6 +23,8 @@ public class WorkManagerImpl implements WorkManager {
 
     @Override
     public void addWork(WorkData workData, String parentGroupId) {
+        workData.setType(new WorkTypeToWorkTypeDataConverter().convert(workGroupDao.getWorkGroup(parentGroupId).getWorkType()));
+
         workDao.addWork(convertWorkDataToWork(workData), parentGroupId);
     }
 
@@ -46,13 +49,13 @@ public class WorkManagerImpl implements WorkManager {
     }
 
     @Override
-    public void addWorkGroup(String workGroupName, String parentGroupId) {
-        workGroupDao.addWorkGroup(workGroupName, parentGroupId);
+    public void addWorkGroup(String workGroupName, String parentGroupId, WorkTypeData workTypeData) {
+        workGroupDao.addWorkGroup(workGroupName, parentGroupId, new WorkTypeDataToWorkTypeConverter().convert(workTypeData));
     }
 
     @Override
-    public void addWorkGroup(String groupName) {
-        workGroupDao.addWorkGroup(groupName);
+    public void addWorkGroup(String groupName, WorkTypeData workTypeData) {
+        workGroupDao.addWorkGroup(groupName, new WorkTypeDataToWorkTypeConverter().convert(workTypeData));
     }
 
     @Override

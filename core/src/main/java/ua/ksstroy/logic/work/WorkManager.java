@@ -1,5 +1,7 @@
 package ua.ksstroy.logic.work;
 
+import ua.ksstroy.logic.worktype.WorkTypeData;
+
 public interface WorkManager {
 
     void addWork(WorkData workData, String parentGroupId);
@@ -12,9 +14,9 @@ public interface WorkManager {
 
     void remoteWork(String workId);
 
-    void addWorkGroup(String workGroupName, String parentGroupId);
+    void addWorkGroup(String workGroupName, String parentGroupId, WorkTypeData workTypeData);
 
-    void addWorkGroup(String groupName);
+    void addWorkGroup(String groupName, WorkTypeData workTypeData);
 
     void removeWorkTypeGroup(String groupId);
 

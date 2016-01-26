@@ -3,6 +3,8 @@
  */
 package ua.ksstroy.logic.work;
 
+import ua.ksstroy.logic.worktype.WorkType;
+
 import java.util.List;
 
 public interface WorkGroup {
@@ -22,5 +24,9 @@ public interface WorkGroup {
 	public List<Work> getWork();
 
 	public void setWork(List<Work> works);
+
+	WorkType getWorkType();
+
+	void setWorkType(WorkType workType);
 
 }

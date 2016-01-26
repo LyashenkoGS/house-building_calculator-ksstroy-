@@ -4,8 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ attribute name="workGroup" required="true" type="ua.ksstroy.logic.work.WorkGroupData" %>
-<%@attribute name="workType" required="true" type="ua.ksstroy.logic.worktype.WorkTypeGroupData" %>
-
+<%--<%@attribute name="workType" required="true" type="ua.ksstroy.logic.worktype.WorkTypeGroupData" %>--%>
 <%@attribute name="zone" required="true" type="ua.ksstroy.logic.zonegroup.ZoneHierarchyData" %>
 
 <spring:url value="/resources/img/done_btn.png" var="done_btn"/>
@@ -21,14 +20,10 @@
                 <td>name:</td>
                 <td><input type="text" name="name" placeholder="Enter name"></td>
             </tr>
-            <tr>
-                <td>type id:</td>
-                <td><input type="text" name="workTypeId" placeholder="Enter type id"></td>
-            </tr>
-            <tr>
+            <%--<tr>
                 <td>planedCost:</td>
                 <td><input type="text" name="planedCost" placeholder="Enter planedCost"></td>
-            </tr>
+            </tr>--%>
 
             <tr>
                 <td>perspectiveCost:</td>
@@ -42,7 +37,7 @@
                 <td>dealCost:</td>
                 <td><input type="text" name="dealCost" placeholder="Enter dealCost"></td>
             </tr>
-            <tr>
+            <%--<tr>
                 <td>work type:</td>
                 <td>
                 <form method="post">
@@ -57,7 +52,7 @@
                     </select>
                 </form>
                 </td>
-            </tr>
+            </tr>--%>
 
             <tr>
                 <td>zone:</td>
@@ -66,9 +61,11 @@
                         <select name="zoneId">
                             <c:forEach var="zone" items="${zone.groups}">
 
-                                <c:forEach var="zoneData" items="${zone.zones}">
+                                <option value="1">${zone.name}</option>
+
+                                <%--<c:forEach var="zoneData" items="${zone.zones}">
                                     <option value="${zoneData.id}">${zoneData.name}</option>
-                                </c:forEach>
+                                </c:forEach>--%>
 
                             </c:forEach>
                         </select>

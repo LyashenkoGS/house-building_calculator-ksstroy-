@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ attribute name="workGroup" required="true" type="ua.ksstroy.logic.work.WorkGroupData" %>
-<%@attribute name="workType" required="true" type="ua.ksstroy.logic.worktype.WorkTypeGroupData" %>
+<%--<%@attribute name="workType" required="true" type="ua.ksstroy.logic.worktype.WorkTypeGroupData" %>--%>
+<%--<%@attribute name="zone" required="true" type="ua.ksstroy.logic.zonegroup.ZoneHierarchyData" %>--%>
 <%@ taglib prefix="work" tagdir="/WEB-INF/tags/work" %>
 
 <spring:url value="/resources/img/arrow_drop_down.png" var="arrow_drop_down"/>
@@ -25,8 +26,8 @@
             <img class="add_btn clickableIcon" src="${add_btn}" alt="Add">
             <img class="show_update_forms_btn clickableIcon" src="${show_update_forms_btn}" alt="show_update_forms">
         </div>
-        <work:addWork workGroup="${workGroup}" workType="${workType}" zone="${zone}"/>
-        <work:addWorkGroup innerWorkGroup="${workGroup}"/>
+        <work:addWork workGroup="${workGroup}" zone="${zone}"/>
+        <work:addWorkGroup innerWorkGroup="${workGroup}" workType="${workType}"/>
         <work:updateWorkGroup workGroup="${workGroup}"/>
     </div>
 </c:if>

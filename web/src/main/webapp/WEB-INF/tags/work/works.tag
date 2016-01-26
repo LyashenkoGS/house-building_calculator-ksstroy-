@@ -16,7 +16,7 @@
         <div class="item">
             <img class="dropdown_btn clickableIcon" src="${arrow_drop_down}" alt="Arrow">
                 ${work.name}
-                ${work.}
+                planed cost: ${work.planedCost}
             <div class="add_delete_wrapper">
                 <form action="${pageContext.request.contextPath}/projects/removeWork" method="post">
                     <input type="hidden" name="projectId" value="${projectId}">

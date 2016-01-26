@@ -50,9 +50,10 @@ public class WorkController {
 
     @RequestMapping(value = "/projects/addOuterWorkGroup", method = RequestMethod.POST)
     public String addOuterWorkGroup(@RequestParam("name") String outerWorkTypeGroupName,
-                                    @RequestParam("projectId") String projectId) {
+                                    @RequestParam("projectId") String projectId,
+                                    @RequestParam("workTypeId") String workTypeId) {
 
-        workManager.addWorkGroup(outerWorkTypeGroupName);
+        workManager.addWorkGroup(outerWorkTypeGroupName, workTypeManager.getWorkTypeById(workTypeId));
 
         return "redirect:" + projectId + "/work";
     }
@@ -60,9 +61,10 @@ public class WorkController {
     @RequestMapping(value = "/projects/addInnerWorkGroup", method = RequestMethod.POST)
     public String addInnerWorkGroup(@RequestParam("name") String innerWorkTypeGroupName,
                                     @RequestParam("parentId") String parentWorkTypeGroupId,
-                                    @RequestParam("projectId") String projectId) {
+                                    @RequestParam("projectId") String projectId,
+                                    @RequestParam("workTypeId") String workTypeId) {
 
-        workManager.addWorkGroup(innerWorkTypeGroupName, parentWorkTypeGroupId);
+        workManager.addWorkGroup(innerWorkTypeGroupName, parentWorkTypeGroupId, workTypeManager.getWorkTypeById(workTypeId));
 
         return "redirect:" + projectId + "/work";
     }
@@ -89,30 +91,19 @@ public class WorkController {
 
     @RequestMapping(value = "/projects/addWork", method = RequestMethod.POST)
     public String addWork(@RequestParam("name") String name,
-                          @RequestParam("planedCost") String planedCoast,
                           @RequestParam("perspectiveCost") String perspectiveCost,
                           @RequestParam("closedCost") String closedCost,
                           @RequestParam("dealCost") String dealCost,
                           @RequestParam("parentId") String parentWorkTypeGroupId,
                           @RequestParam("projectId") String projectId,
-                          @RequestParam("workTypeId") String workTypeId,
                           @RequestParam("zoneId") String zoneId) {
 
         workData = new WorkData();
         workData.setName(name);
 
-        workData.setType(workTypeManager.getWorkTypeById(workTypeId));
-
-        /*List<ZoneData> listZones = new ArrayList<>();
-        listZones.add(new ZoneData());
-        workData.setWorkZones(listZones);
-
-        workData.setAllCovers();
-
-        workData.setAdjustments();*/
 
         try {
-            workData.setPlanedCost(new Double(planedCoast).doubleValue());
+            /*workData.setPlanedCost(new Double(planedCoast).doubleValue());*/
             workData.setPerspectiveCost(new Double(perspectiveCost).doubleValue());
             workData.setClosedCost(new Double(closedCost).doubleValue());
             workData.setDealCost(new Double(dealCost).doubleValue());

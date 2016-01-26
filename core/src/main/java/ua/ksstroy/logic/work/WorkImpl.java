@@ -88,8 +88,8 @@ public class WorkImpl implements Work {
 
     @Override
     public Double getPlanedCost() {
-        double costForAllMaterials=0;
-        double valueForAllZones=0;
+        double costForAllMaterials = 0;
+        double valueForAllZones = 0;
 
         List<MaterialImpl> listMaterials = type.getMaterials();
 

@@ -1,5 +1,7 @@
 package ua.ksstroy.logic.work;
 
+import ua.ksstroy.logic.worktype.WorkType;
+
 import java.util.List;
 
 public class WorkGroupImpl implements WorkGroup {
@@ -7,6 +9,8 @@ public class WorkGroupImpl implements WorkGroup {
     private String id;
 
     private String name;
+
+    private WorkType type;
 
     private List<WorkGroup> groups;
 
@@ -50,6 +54,16 @@ public class WorkGroupImpl implements WorkGroup {
     @Override
     public void setWork(List<Work> works) {
         this.works = works;
+    }
+
+    @Override
+    public WorkType getWorkType() {
+        return this.type;
+    }
+
+    @Override
+    public void setWorkType(WorkType workType) {
+        this.type = workType;
     }
 
 }

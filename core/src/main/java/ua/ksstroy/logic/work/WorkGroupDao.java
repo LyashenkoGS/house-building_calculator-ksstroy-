@@ -1,10 +1,12 @@
 package ua.ksstroy.logic.work;
 
+import ua.ksstroy.logic.worktype.WorkType;
+
 public interface WorkGroupDao {
 
-    void addWorkGroup(String workGroupName, String parentGroupId);
+    void addWorkGroup(String workGroupName, String parentGroupId, WorkType workType);
 
-    void addWorkGroup(String groupName);
+    void addWorkGroup(String groupName, WorkType workType);
 
     void removeWorkTypeGroup(String groupId);
 
