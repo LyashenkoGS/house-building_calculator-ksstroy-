@@ -16,12 +16,14 @@ public interface WorkManager {
 
     void addWorkGroup(String workGroupName, String parentGroupId, WorkTypeData workTypeData);
 
-    void addWorkGroup(String groupName, WorkTypeData workTypeData);
+    void addWorkGroupToRootGroup(String groupName, WorkTypeData workTypeData);
 
     void removeWorkTypeGroup(String groupId);
 
     WorkGroupData getWorkHierarchy();
 
     void updateWorkGroupName(String groupId, String newName);
+
+    WorkGroupData getWorkGroup(String id);
 
 }

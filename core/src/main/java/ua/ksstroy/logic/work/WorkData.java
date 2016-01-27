@@ -13,7 +13,7 @@ public class WorkData {
 	
 	private WorkTypeData type;
 	
-	private List<ZoneData> workZones;
+	private ZoneData zoneData;
 	
 	private List<CoverData> allCovers;
 	
@@ -35,12 +35,12 @@ public class WorkData {
 		this.type = type;
 	}
 
-	public List<ZoneData> getWorkZones() {
-		return workZones;
+	public ZoneData getWorkZone() {
+		return zoneData;
 	}
 
-	public void setWorkZones(List<ZoneData> workZones) {
-		this.workZones = workZones;
+	public void setWorkZones(ZoneData workZone) {
+		this.zoneData = workZone;
 	}
 
 	public List<CoverData> getAllCovers() {

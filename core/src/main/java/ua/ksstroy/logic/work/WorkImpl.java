@@ -14,7 +14,7 @@ public class WorkImpl implements Work {
 
     private WorkType type;
 
-    private List<Zone> workZones;
+    private Zone workZone;
 
     private List<Cover> allCovers;
 
@@ -41,14 +41,14 @@ public class WorkImpl implements Work {
     }
 
     @Override
-    public List<Zone> getWorkZones() {
+    public Zone getWorkZone() {
 
-        return workZones;
+        return workZone;
     }
 
     @Override
-    public void setWorkZones(List<Zone> workZones) {
-        this.workZones = workZones;
+    public void setWorkZone(Zone workZone) {
+        this.workZone = workZone;
 
     }
 
@@ -89,21 +89,24 @@ public class WorkImpl implements Work {
     @Override
     public Double getPlanedCost() {
         double costForAllMaterials = 0;
-        double valueForAllZones = 0;
+        double planed = 0;
 
-        List<MaterialImpl> listMaterials = type.getMaterials();
+        //TODO fix nullpointerexception here
+        /*for (MaterialImpl listMaterial : type.getMaterials()) {
+            if (listMaterial == null) {
+                System.out.println("NuuuuuuuLLLLLLLLLLLLLL");
+                break;
+            } else {
+                costForAllMaterials = costForAllMaterials + listMaterial.getPlanedCost();
+                System.out.println(costForAllMaterials);
+            }
 
-        for (int i = 0; i < listMaterials.size(); i++) {
-            costForAllMaterials = costForAllMaterials + listMaterials.get(i).getPlanedCost();
-        }
+        }*/
 
-        for (int i = 0; i < workZones.size(); i++) {
-            valueForAllZones = valueForAllZones + workZones.get(i).getValue();
-        }
+        planed = type.getUnitPrice() + (costForAllMaterials * workZone.getValue());
+        planedCost = planed;
 
-        this.planedCost = type.getUnitPrice() + (costForAllMaterials * valueForAllZones );
-
-        return this.planedCost;
+        return planedCost;
     }
 
     @Override

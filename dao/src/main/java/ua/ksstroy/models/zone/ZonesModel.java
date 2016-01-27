@@ -53,8 +53,8 @@ public class ZonesModel implements Serializable {
     @JoinColumn(name = "surplus_for_zones_id")
     private ZonesModel surplusZoneToRootZone;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "workZones")
-    private List<WorkModel> works;
+    /*@ManyToMany(fetch = FetchType.LAZY, mappedBy = "workZones")
+    private List<WorkModel> works;*/
 
     public ZonesModel() {
 
@@ -124,13 +124,13 @@ public class ZonesModel implements Serializable {
         this.surplusZone = surplusZone;
     }
 
-    public List<WorkModel> getWorks() {
+    /*public List<WorkModel> getWorks() {
         return works;
     }
 
     public void setWorks(List<WorkModel> works) {
         this.works = works;
-    }
+    }*/
 
     public GroupsModel getGroupIdForZone() {
         return groupIdForZone;

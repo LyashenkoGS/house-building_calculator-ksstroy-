@@ -15,8 +15,8 @@
     <li>
         <div class="item">
             <img class="dropdown_btn clickableIcon" src="${arrow_drop_down}" alt="Arrow">
-                ${work.name}
-                planed cost: ${work.planedCost}
+                <b>${work.name}</b><br>
+                planed_cost: ${work.planedCost}
             <div class="add_delete_wrapper">
                 <form action="${pageContext.request.contextPath}/projects/removeWork" method="post">
                     <input type="hidden" name="projectId" value="${projectId}">
@@ -27,13 +27,13 @@
                 <img class="show_update_forms_btn clickableIcon" src="${show_update_forms_btn}" alt="show_update_forms">
             </div>
             <work:updateWork work="${work}"/>
-            <work:addCover work="${work}"/>
-            <work:addAdjustment work="${work}"/>
+            <%--<work:addCover work="${work}"/>
+            <work:addAdjustment work="${work}"/>--%>
         </div>
         <ul class ="subgroup">
-            <work:covers coverList="${work.allCovers}"/>
+            <%--<work:covers coverList="${work.allCovers}"/>
             <work:adjustment adjustmentList="${work.adjustments}"/>
-            <work:zones zoneList="${work.workZones}"/>
+            <work:zones zoneList="${work.workZones}"/>--%>
         </ul>
     </ul>
     </li>

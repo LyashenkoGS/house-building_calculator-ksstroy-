@@ -6,14 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ua.ksstroy.converter.zonegroup.ZoneToZoneDataConverter;
 import ua.ksstroy.logic.work.AdjustmentData;
 import ua.ksstroy.logic.work.CoverData;
 import ua.ksstroy.logic.work.WorkData;
 import ua.ksstroy.logic.work.WorkManager;
+import ua.ksstroy.logic.worktype.WorkTypeData;
 import ua.ksstroy.logic.worktype.WorkTypeManagerImpl;
 import ua.ksstroy.logic.zonegroup.ZoneManagerImpl;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class WorkController {
@@ -49,7 +53,8 @@ public class WorkController {
                                     @RequestParam("projectId") String projectId,
                                     @RequestParam("workTypeId") String workTypeId) {
 
-        workManager.addWorkGroup(outerWorkTypeGroupName, workTypeManager.getWorkTypeById(workTypeId));
+
+        workManager.addWorkGroupToRootGroup(outerWorkTypeGroupName, workTypeManager.getWorkTypeById(workTypeId));
 
         return "redirect:" + projectId + "/work";
     }
@@ -90,16 +95,39 @@ public class WorkController {
                           @RequestParam("perspectiveCost") String perspectiveCost,
                           @RequestParam("closedCost") String closedCost,
                           @RequestParam("dealCost") String dealCost,
-                          @RequestParam("parentId") String parentWorkTypeGroupId,
+                          @RequestParam("parentId") String parentWorkGroupId,
                           @RequestParam("projectId") String projectId,
                           @RequestParam("zoneId") String zoneId) {
 
         workData = new WorkData();
         workData.setName(name);
+        workData.setWorkZones(new ZoneToZoneDataConverter().convert(zoneManager.getZoneById(zoneId)));
+        WorkTypeData workTypeData = workManager.getWorkGroup(parentWorkGroupId).getWorkTypeData();
+        workData.setType(workTypeData);
+        workData.setPlanedCost(workData.getPlanedCost());
 
+        CoverData coverData = new CoverData();
+
+        coverData.setDate("data_1");
+        coverData.setValue(12.0);
+        coverData.setDescription("description_1");
+
+        List<CoverData> coverDataList = new ArrayList<>();
+        coverDataList.add(coverData);
+
+        AdjustmentData adjustmentData = new AdjustmentData();
+
+        adjustmentData.setAbsolute(true);
+        adjustmentData.setValue(123.0);
+
+        List<AdjustmentData> adjustmentDataList = new ArrayList<>();
+        adjustmentDataList.add(adjustmentData);
+
+        workData.setAllCovers(coverDataList);
+        workData.setAdjustments(adjustmentDataList);
 
         try {
-            /*workData.setPlanedCost(new Double(planedCoast).doubleValue());*/
+            workData.setPlanedCost(1.0);
             workData.setPerspectiveCost(new Double(perspectiveCost).doubleValue());
             workData.setClosedCost(new Double(closedCost).doubleValue());
             workData.setDealCost(new Double(dealCost).doubleValue());
@@ -107,7 +135,7 @@ public class WorkController {
             e.printStackTrace();
         }
 
-        workManager.addWork(workData, parentWorkTypeGroupId);
+        workManager.addWork(workData, parentWorkGroupId);
         System.out.println("add work");
         return "redirect:" + projectId + "/work";
     }

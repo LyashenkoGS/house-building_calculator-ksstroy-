@@ -61,4 +61,9 @@ public class ZoneManagerImpl implements ZoneManager {
         zoneDaoImpl.removeGroup(groupId);
     }
 
+    @Override
+    public Zone getZoneById(String zoneId) {
+        return zoneDaoImpl.getZoneById(zoneId);
+    }
+
 }

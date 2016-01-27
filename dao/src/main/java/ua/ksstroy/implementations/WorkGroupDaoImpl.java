@@ -33,13 +33,18 @@ public class WorkGroupDaoImpl implements WorkGroupDao {
     }
 
     @Override
-    public void addWorkGroup(final String groupName, final WorkType workType) {
+    public void addWorkGroupToRootGroup(final String groupName, final WorkType workType) {
         helper.doWithCommit(new DoInTransaction() {
             @Override
             public void process(SessionWrapper session) {
                 WorkGroupModel workGroupModel = new WorkGroupModel();
+
                 workGroupModel.setName(groupName);
                 workGroupModel.setType(new WorkTypeToWorkTypeModelConvert().convert(workType));
+
+                System.out.println(session.get(WorkGroupModel.class, ROOT_GROUP_ID).getName());
+
+                workGroupModel.setWorkGroupModel(session.get(WorkGroupModel.class, "1"));
 
                 session.save(workGroupModel);
             }

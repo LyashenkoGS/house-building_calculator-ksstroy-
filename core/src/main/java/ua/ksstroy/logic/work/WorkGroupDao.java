@@ -6,7 +6,7 @@ public interface WorkGroupDao {
 
     void addWorkGroup(String workGroupName, String parentGroupId, WorkType workType);
 
-    void addWorkGroup(String groupName, WorkType workType);
+    void addWorkGroupToRootGroup(String groupName, WorkType workType);
 
     void removeWorkTypeGroup(String groupId);
 
@@ -15,4 +15,5 @@ public interface WorkGroupDao {
     void updateWorkGroupName(String groupId, String newName);
 
     WorkGroup getWorkGroup(final String id);
+
 }

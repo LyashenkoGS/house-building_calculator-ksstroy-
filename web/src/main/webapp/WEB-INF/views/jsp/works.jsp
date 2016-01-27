@@ -17,8 +17,8 @@
 <div id="wraper">
     <ul id="workDataTree">
         <ul class="initializers">
-            <work:addWorkGroup innerWorkGroup="${workGroup}" workType="${workType}"/>
-            <work:addWork workGroup="${workGroup}" zone="${zone}"/>
+            <%--<work:addWorkGroup innerWorkGroup="${workGroup}" workType="${workType}"/>--%>
+            <work:addOuterProjectWork workType="${workType}"/>
         </ul>
         <work:node workGroupData="${workObject}"/>
     </ul>

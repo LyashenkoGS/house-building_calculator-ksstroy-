@@ -27,4 +27,6 @@ public interface ZoneManager {
 	void updateGroup(String groupId, String newGroup);
 
 	void removeGroup(String groupId);
+
+	Zone getZoneById(String zoneId);
 }

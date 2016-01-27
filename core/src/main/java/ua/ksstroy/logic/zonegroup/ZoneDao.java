@@ -28,4 +28,6 @@ public interface ZoneDao {
 
 	void removeGroup(String groupId);
 
+	Zone getZoneById(String zoneId);
+
 }

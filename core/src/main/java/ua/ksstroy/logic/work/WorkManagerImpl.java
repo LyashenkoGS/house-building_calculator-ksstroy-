@@ -23,8 +23,6 @@ public class WorkManagerImpl implements WorkManager {
 
     @Override
     public void addWork(WorkData workData, String parentGroupId) {
-        workData.setType(new WorkTypeToWorkTypeDataConverter().convert(workGroupDao.getWorkGroup(parentGroupId).getWorkType()));
-
         workDao.addWork(convertWorkDataToWork(workData), parentGroupId);
     }
 
@@ -54,8 +52,8 @@ public class WorkManagerImpl implements WorkManager {
     }
 
     @Override
-    public void addWorkGroup(String groupName, WorkTypeData workTypeData) {
-        workGroupDao.addWorkGroup(groupName, new WorkTypeDataToWorkTypeConverter().convert(workTypeData));
+    public void addWorkGroupToRootGroup(String groupName, WorkTypeData workTypeData) {
+        workGroupDao.addWorkGroupToRootGroup(groupName, new WorkTypeDataToWorkTypeConverter().convert(workTypeData));
     }
 
     @Override
@@ -74,6 +72,11 @@ public class WorkManagerImpl implements WorkManager {
         workGroupDao.updateWorkGroupName(groupId, newName);
     }
 
+    @Override
+    public WorkGroupData getWorkGroup(String id) {
+        return convertWorkGroupToWorkGroupData(workGroupDao.getWorkGroup(id));
+    }
+
     public Work convertWorkDataToWork(WorkData workData) {
         Work work = new WorkImpl();
 
@@ -84,12 +87,7 @@ public class WorkManagerImpl implements WorkManager {
         work.setDealCost(workData.getDealCost());
         work.setClosedCost(workData.getClosedCost());
         work.setPlanedCost(workData.getPlanedCost());
-
-        List<Zone> zoneList = new ArrayList<>();
-        for (ZoneData zoneData : workData.getWorkZones()) {
-            zoneList.add(new ZoneDataToZoneConverter().convert(zoneData));
-        }
-        work.setWorkZones(zoneList);
+        work.setWorkZone(new ZoneDataToZoneConverter().convert(workData.getWorkZone()));
 
         List<Cover> coverList = new ArrayList<>();
         for (CoverData coverData : workData.getAllCovers()) {
@@ -132,6 +130,7 @@ public class WorkManagerImpl implements WorkManager {
 
         workGroupData.setId(workGroup.getId());
         workGroupData.setName(workGroup.getName());
+        workGroupData.setWorkTypeData(new WorkTypeToWorkTypeDataConverter().convert(workGroup.getWorkType()));
 
         List<WorkGroupData> workGroupDatas = new ArrayList<>();
         for (WorkGroup workGr : workGroup.getGroups()) {
@@ -158,12 +157,7 @@ public class WorkManagerImpl implements WorkManager {
         workData.setPerspectiveCost(work.getPerspectiveCost());
         workData.setPlanedCost(work.getPlanedCost());
         workData.setType(new WorkTypeToWorkTypeDataConverter().convert(work.getType()));
-
-        List<ZoneData> zoneDatas = new ArrayList<>();
-        for (Zone zone : work.getWorkZones()) {
-            zoneDatas.add(new ZoneToZoneDataConverter().convert(zone));
-        }
-        workData.setWorkZones(zoneDatas);
+        workData.setWorkZones(new ZoneToZoneDataConverter().convert(work.getWorkZone()));
 
         List<CoverData> coverDatas = new ArrayList<>();
         for (Cover cover : work.getAllCovers()) {

@@ -11,9 +11,9 @@ public interface Work {
 
 	public void setType(WorkType type);
 
-	public List<Zone> getWorkZones();
+	public Zone getWorkZone();
 
-	public void setWorkZones(List<Zone> workZones);
+	public void setWorkZone(Zone workZone);
 
 	public List<Cover> getAllCovers();
 

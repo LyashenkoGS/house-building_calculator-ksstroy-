@@ -69,6 +69,17 @@ public class ZoneGroupDaoImpl implements ZoneDao {
     }
 
     @Override
+    public Zone getZoneById(final String zoneId) {
+        return helper.simpleAction(new GetInTransaction<Zone>() {
+            public Zone process(SessionWrapper session) {
+                session.get(ZonesModel.class, zoneId);
+
+                return new ZonesModelToZoneConverter().convert(session.get(ZonesModel.class, zoneId));
+            }
+        });
+    }
+
+    @Override
     public ZoneGroup getAllHierarchy(final String projectId) {
         return helper.simpleAction(new GetInTransaction<ZoneGroup>() {
             public ZoneGroup process(SessionWrapper session) {

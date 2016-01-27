@@ -28,12 +28,7 @@ public class WorkModelToWorkConverter implements Converter<WorkModel, Work> {
         work.setPerspectiveCost(workModel.getPerspectiveCost());
         work.setPlanedCost(workModel.getPlanedCost());
         work.setType(new WorkTypeModelToWorkTypeConvert().convert(workModel.getType()));
-
-        List<Zone> zones = new ArrayList<>();
-        for (ZonesModel zonesModel : workModel.getWorkZones()) {
-            zones.add(new ZonesModelToZoneConverter().convert(zonesModel));
-        }
-        work.setWorkZones(zones);
+        work.setWorkZone(new ZonesModelToZoneConverter().convert(workModel.getZonesModel()));
 
         List<Cover> covers = new ArrayList<>();
         for (CoverModel coverModel : workModel.getAllCovers()) {

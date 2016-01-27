@@ -22,12 +22,16 @@ public class WorkModel {
     @JoinColumn(name = "work_type_id")
     private WorkTypeModel type;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zone_id")
+    private ZonesModel zonesModel;
+
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "work_zone_rel", catalog = "ksstroy", joinColumns = {
             @JoinColumn(name = "work_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "zone_id",
                     nullable = false, updatable = false)})
-    private List<ZonesModel> workZones;
+    private List<ZonesModel> workZones;*/
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "work_id")
@@ -82,13 +86,21 @@ public class WorkModel {
         this.type = type;
     }
 
-    public List<ZonesModel> getWorkZones() {
+    public ZonesModel getZonesModel() {
+        return zonesModel;
+    }
+
+    public void setZonesModel(ZonesModel zonesModel) {
+        this.zonesModel = zonesModel;
+    }
+
+    /*public List<ZonesModel> getWorkZones() {
         return workZones;
     }
 
     public void setWorkZones(List<ZonesModel> workZones) {
         this.workZones = workZones;
-    }
+    }*/
 
     public List<CoverModel> getAllCovers() {
         return allCovers;
