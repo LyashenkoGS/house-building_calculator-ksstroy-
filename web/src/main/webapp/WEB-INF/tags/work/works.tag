@@ -17,7 +17,8 @@
             <img class="dropdown_btn clickableIcon" src="${arrow_drop_down}" alt="Arrow">
                 <b>${work.name}</b><br>
                 planed_cost: ${work.planedCost}<br>
-                zone: zone_name
+                zone: zone_name<br>
+                work_type: work_tpe name
             <div class="add_delete_wrapper">
                 <form action="${pageContext.request.contextPath}/projects/removeWork" method="post">
                     <input type="hidden" name="projectId" value="${projectId}">
