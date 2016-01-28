@@ -228,29 +228,13 @@ CREATE TABLE `works` (
   `parent_group_id`  BIGINT(11)
 );
 
-INSERT INTO `works` VALUES (1, 'work_1', 1, 1, 2, 3, 4, 4, 4);
-INSERT INTO `works` VALUES (2, 'work_2', 2, 2, 2, 3, 4, 4, 4);
-INSERT INTO `works` VALUES (3, 'work_3', 2, 2, 2, 3, 4, 4, 4);
-INSERT INTO `works` VALUES (4, 'work_4', 3, 3, 2, 3, 4, 5, 5);
-INSERT INTO `works` VALUES (5, 'work_5', 3, 3, 2, 3, 4, 5, 5);
-INSERT INTO `works` VALUES (6, 'work_6', 3, 3, 2, 3, 4, 6, 5);
-
-/*DROP TABLE IF EXISTS `work_zone_rel`;
-CREATE TABLE `work_zone_rel` (
-  `id`      BIGINT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `work_id` BIGINT(11),
-  `zone_id` BIGINT(11)
-);
-
-INSERT INTO `work_zone_rel` VALUES (1, 1, 1);
-INSERT INTO `work_zone_rel` VALUES (2, 2, 1);
-INSERT INTO `work_zone_rel` VALUES (3, 3, 2);
-INSERT INTO `work_zone_rel` VALUES (4, 4, 4);
-INSERT INTO `work_zone_rel` VALUES (5, 5, 5);
-INSERT INTO `work_zone_rel` VALUES (6, 6, 6);
-
-
-INSERT INTO `work_zone_rel` VALUES ();*/
+INSERT INTO `works` VALUES (1, 'work_1', 1, 1, 2, 3, 4, 4, 2);
+INSERT INTO `works` VALUES (2, 'work_2', 2, 2, 2, 3, 4, 4, 2);
+INSERT INTO `works` VALUES (3, 'work_3', 2, 2, 2, 3, 4, 4, 2);
+INSERT INTO `works` VALUES (4, 'work_4', 3, 3, 2, 3, 4, 5, 3);
+INSERT INTO `works` VALUES (5, 'work_5', 3, 3, 2, 3, 4, 5, 3);
+INSERT INTO `works` VALUES (6, 'work_6', 3, 3, 2, 3, 4, 6, 3);
+INSERT INTO `work_zone_rel` VALUES ();
 
 DROP TABLE IF EXISTS `adjustments`;
 CREATE TABLE `adjustments` (
@@ -294,6 +278,7 @@ CREATE TABLE `work_groups` (
 INSERT INTO `work_groups` VALUES (1, 'root_group', NULL, 1);
 INSERT INTO `work_groups` VALUES (2, 'PROJECT_WORK_1', 1, 1);
 INSERT INTO `work_groups` VALUES (3, 'PROJECT_WORK_2', 1, 1);
-INSERT INTO `work_groups` VALUES (4, 'PROJECT_WORK_3', 2, 2);
-INSERT INTO `work_groups` VALUES (5, 'PROJECT_WORK_4', 2, 2);
+INSERT INTO `work_groups` VALUES (4, 'PROJECT_WORK_3', 1, 2);
+INSERT INTO `work_groups` VALUES (5, 'PROJECT_WORK_4', 1, 2);
+INSERT INTO `work_groups` VALUES (6, 'PROJECT_WORK_5', 1, 3);
 
