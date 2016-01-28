@@ -25,7 +25,7 @@
                 <td><input type="text" name="planedCost" placeholder="Enter planedCost"></td>
             </tr>--%>
 
-            <tr>
+            <%--<tr>
                 <td>perspectiveCost:</td>
                 <td><input type="text" name="perspectiveCost" placeholder="Enter perspectiveCost"></td>
             </tr>
@@ -36,7 +36,7 @@
             <tr>
                 <td>dealCost:</td>
                 <td><input type="text" name="dealCost" placeholder="Enter dealCost"></td>
-            </tr>
+            </tr>--%>
             <%--<tr>
                 <td>work type:</td>
                 <td>
@@ -61,11 +61,11 @@
                         <select name="zoneId">
                             <c:forEach var="zone" items="${zone.groups}">
 
-                                <option value="1">${zone.name}</option>
+                                <%--<option value="1">${zone.name}</option>--%>
 
-                                <%--<c:forEach var="zoneData" items="${zone.zones}">
+                                <c:forEach var="zoneData" items="${zone.zones}">
                                     <option value="${zoneData.id}">${zoneData.name}</option>
-                                </c:forEach>--%>
+                                </c:forEach>
 
                             </c:forEach>
                         </select>

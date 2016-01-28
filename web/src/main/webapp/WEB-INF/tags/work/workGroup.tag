@@ -26,8 +26,8 @@
             <img class="add_btn clickableIcon" src="${add_btn}" alt="Add">
             <img class="show_update_forms_btn clickableIcon" src="${show_update_forms_btn}" alt="show_update_forms">
         </div>
-        <work:addWork workGroup="${workGroup}" zone="${zone}"/>
+        <work:addWork workGroup="${workGroup}" zone="${zone}"/><%--
         <work:addWorkGroup innerWorkGroup="${workGroup}" workType="${workType}"/>
-        <work:updateWorkGroup workGroup="${workGroup}"/>
+        <work:updateWorkGroup workGroup="${workGroup}"/>--%>
     </div>
 </c:if>
